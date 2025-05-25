@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Контакты</title>
+  <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      width: 220px;
+      background-color: #09388a;
+      color: #ffffff;
+      padding: 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar h1 {
+      font-size: 1.5em;
+      margin: 0 0 20px 10px;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 10px 8px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      transition: background-color 0.2s;
+    }
+
+    #sidebar nav a:hover {
+      background-color: #ffffff22;
+    }
+
+    #content {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 20px;
+      position: relative;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #09388a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<script>
+  function scrollToTop() {
+    document.getElementById('content').scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<body>
+  <aside id="sidebar">
+    <h1>Fesco</h1>
+    <nav>
+      <a href="index.html" class="">О компании</a>
+      <a href="news.html" class="">Новости</a>
+      <a href="currency.html" class="">Курс валют</a>
+      <a href="contacts.html" class="">Контактные данные</a>
+      <a href="video.html" class="">Видео</a>
+    </nav>
+  </aside>
+
+  <main id="content">
+    
+<h2>Контактные данные</h2>
+<table class="table table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th scope="row">Телефон горячей линии:</th>
+      <td>8-800-23-444-99</td>
+    </tr>
+    <tr>
+      <th scope="row">Электронная почта:</th>
+      <td><a href="mailto:sales@fesco.com">sales@fesco.com</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Адрес головного офиса:</th>
+      <td>115184, г. Москва, Новокузнецкая ул., д. 7/11, стр. 1</td>
+    </tr>
+    <tr>
+      <th scope="row">Представительство во Владивостоке:</th>
+      <td>690065, г. Владивосток, ул. Светланская, д. 59</td>
+    </tr>
+  </tbody>
+</table>
+
+<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afa26f7ffb9f78c1bbdabf7c1aa2efb1f51c03db1431b0b56bbef3aa831b1e8de&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+
+
+    <a href="#" onclick="scrollToTop(); return false;" class="back-to-top">Наверх ↑</a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Новости</title>
+  <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      width: 220px;
+      background-color: #09388a;
+      color: #ffffff;
+      padding: 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar h1 {
+      font-size: 1.5em;
+      margin: 0 0 20px 10px;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 10px 8px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      transition: background-color 0.2s;
+    }
+
+    #sidebar nav a:hover {
+      background-color: #ffffff22;
+    }
+
+    #content {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 20px;
+      position: relative;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #09388a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<script>
+  function scrollToTop() {
+    document.getElementById('content').scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<body>
+  <aside id="sidebar">
+    <h1>Fesco</h1>
+    <nav>
+      <a href="index.html" class="">О компании</a>
+      <a href="news.html" class="">Новости</a>
+      <a href="currency.html" class="">Курс валют</a>
+      <a href="contacts.html" class="">Контактные данные</a>
+      <a href="video.html" class="">Видео</a>
+    </nav>
+  </aside>
+
+  <main id="content">
+    
+<h2>Новости</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-05-21</strong></p>
+    <h4>ВМТП в I квартале сократил чистую прибыль почти вдвое</h4>
+    <p>ПАО &quot;ВМТП&quot; уменьшило чистую прибыль на 48,1% до 1,493 млрд ₽, при этом выручка выросла на 10,5% до 7,4 млрд ₽.</p>
+    <a href="https://www.interfax.ru/business/1026833" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-05-14</strong></p>
+    <h4>Создана компания «Тай экспресс» для перевозок в Таиланд</h4>
+    <p>АО «Тай экспресс» учреждено для прямых контейнерных перевозок Новороссийск-Бангкок с первой отправкой в августе.</p>
+    <a href="https://www.interfax.ru/business/1025565" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-28</strong></p>
+    <h4>Рынок РФ в I квартале сократился на 0,4%</h4>
+    <p>Российский контейнерный рынок снизился на 0,4% г/г до 1,595 млн TEU: импорт упал на 4%, внутренние перевозки — на 10%.</p>
+    <a href="https://www.interfax.ru/business/1023130" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-24</strong></p>
+    <h4>Контейнерооборот в портах вырос на 2%</h4>
+    <p>За I квартал 2025 г. оборот в морских портах РФ составил 1,595 млн TEU, FESCO и ВМТП обеспечили 75,5% объёма.</p>
+    <a href="https://www.interfax.ru/business/1022608" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-18</strong></p>
+    <h4>FESCO открывает проекты в Африке</h4>
+    <p>Андрей Северилов учредил дочернюю компанию FESCO для развития логистических проектов в Африке.</p>
+    <a href="https://www.interfax.ru/business/1021582" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-15</strong></p>
+    <h4>Расширение экспорта в Индонезию</h4>
+    <p>FESCO рассматривает увеличение поставок лесопромышленных и металлургических грузов в Индонезию.</p>
+    <a href="https://www.interfax.ru/business/1020924" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-09</strong></p>
+    <h4>Убыток ДВМП по РСБУ: 345 млн ₽</h4>
+    <p>ДВМП, входящий в группу FESCO, сообщил об убытке по РСБУ в размере 345 млн ₽ за 2024 г.</p>
+    <a href="https://www.interfax.ru/business/1019980" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-04-09</strong></p>
+    <h4>Прибыль FESCO по МСФО упала на треть</h4>
+    <p>Чистая прибыль FESCO по МСФО в 2024 г. снизилась на 33% до 25,408 млрд ₽.</p>
+    <a href="https://www.interfax.ru/business/1019955" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-03-26</strong></p>
+    <h4>Сокращение объёмов в феврале на 7,3%</h4>
+    <p>В феврале 2025 г. российский рынок контейнерных перевозок упал на 7,3% до 498 тыс. TEU, отмечает FESCO.</p>
+    <a href="https://www.interfax.ru/business/1016652" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+  <div style="border: 1px solid #ccc; padding: 15px; border-radius: 8px;">
+    <p><strong>2025-03-20</strong></p>
+    <h4>Прогноз роста рынка на 3%</h4>
+    <p>FESCO прогнозирует рост российского контейнерного рынка на 3% в 2025 году.</p>
+    <a href="https://www.interfax.ru/business/1015712" target="_blank">
+      <button>Читать источник</button>
+    </a>
+  </div>
+  
+</div>
+
+
+    <a href="#" onclick="scrollToTop(); return false;" class="back-to-top">Наверх ↑</a>
+  </main>
+</body>
+</html>

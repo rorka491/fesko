@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Курсы валют</title>
+  <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      width: 220px;
+      background-color: #09388a;
+      color: #ffffff;
+      padding: 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar h1 {
+      font-size: 1.5em;
+      margin: 0 0 20px 10px;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 10px 8px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      transition: background-color 0.2s;
+    }
+
+    #sidebar nav a:hover {
+      background-color: #ffffff22;
+    }
+
+    #content {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 20px;
+      position: relative;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #09388a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<script>
+  function scrollToTop() {
+    document.getElementById('content').scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<body>
+  <aside id="sidebar">
+    <h1>Fesco</h1>
+    <nav>
+      <a href="index.html" class="">О компании</a>
+      <a href="news.html" class="">Новости</a>
+      <a href="currency.html" class="">Курс валют</a>
+      <a href="contacts.html" class="">Контактные данные</a>
+      <a href="video.html" class="">Видео</a>
+    </nav>
+  </aside>
+
+  <main id="content">
+    
+<h2>Калькулятор валют</h2>
+<div id="rate" style="margin-bottom: 15px; font-weight: bold;"></div>
+<div class="converter" style="display: flex; gap: 20px; align-items: flex-end;">
+  <div>
+    <label for="rub">Рубли (RUB):</label><br>
+    <input type="number" id="rub" placeholder="Сумма в рублях" style="padding: 5px; width: 150px;">
+  </div>
+
+  <div>
+    <label for="qar">Риалы (QAR):</label><br>
+    <input type="number" id="qar" placeholder="Сумма в риалах" style="padding: 5px; width: 150px;">
+  </div>
+</div>
+<canvas id="rateChart" style="max-width: 700px; max-height: 400px; margin-top: 30px;"></canvas>
+
+<div id="selectedInfo" style="margin-top: 10px; font-weight: bold;"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  let exchangeRate = null;
+  fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+    .then(response => response.json())
+    .then(data => {
+      const qar = data.Valute.QAR;
+      exchangeRate = qar.Value / qar.Nominal;
+
+      document.getElementById('rate').textContent = `1 QAR = ${exchangeRate.toFixed(2)} RUB`;
+
+      const rubInput = document.getElementById('rub');
+      const qarInput = document.getElementById('qar');
+
+      rubInput.addEventListener('input', () => {
+        const rubValue = parseFloat(rubInput.value);
+        if (!isNaN(rubValue)) {
+          qarInput.value = (rubValue / exchangeRate).toFixed(2);
+        } else {
+          qarInput.value = '';
+        }
+      });
+
+      qarInput.addEventListener('input', () => {
+        const qarValue = parseFloat(qarInput.value);
+        if (!isNaN(qarValue)) {
+          rubInput.value = (qarValue * exchangeRate).toFixed(2);
+        } else {
+          rubInput.value = '';
+        }
+      });
+    })
+    .catch(error => {
+      alert('Ошибка при загрузке курса валют');
+      console.error(error);
+    });
+</script>
+<script>
+  async function fetchRatesForPeriod(startDate, endDate) {
+    let currentDate = new Date(startDate);
+    const end = new Date(endDate);
+    const rates = [];
+
+    while (currentDate <= end) {
+      const yyyy = currentDate.getFullYear();
+      const mm = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(currentDate.getDate()).padStart(2, '0');
+
+      const url = `https://www.cbr-xml-daily.ru/archive/${yyyy}/${mm}/${dd}/daily_json.js`;
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('No data for ' + `${dd}.${mm}.${yyyy}`);
+        const data = await response.json();
+        if (data.Valute && data.Valute.QAR) {
+          const rate = data.Valute.QAR.Value / data.Valute.QAR.Nominal;
+          rates.push({ date: new Date(currentDate), rate });
+        }
+      } catch (e) {
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return rates;
+  }
+
+  function formatDate(d) {
+    return d.toLocaleDateString('ru-RU');
+  }
+
+  async function buildChart() {
+    const today = new Date();
+    const twoMonthsAgo = new Date();
+    twoMonthsAgo.setDate(today.getDate() - 60);
+
+    const rates = await fetchRatesForPeriod(twoMonthsAgo, today);
+
+    const labels = rates.map(r => formatDate(r.date));
+    const dataRates = rates.map(r => r.rate);
+
+    const ctx = document.getElementById('rateChart').getContext('2d');
+
+    const defaultColor = 'rgba(9, 56, 138, 0.6)';
+    const highlightColor = 'rgba(255, 99, 132, 0.9)';
+    const backgroundColors = new Array(labels.length).fill(defaultColor);
+
+    let selectedBar = null;
+
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Курс QAR в RUB',
+          data: dataRates,
+          backgroundColor: backgroundColors,
+          borderColor: 'rgba(9, 56, 138, 1)',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        },
+        onClick: (evt, elements) => {
+          if (!elements.length) return;
+          const index = elements[0].index;
+
+          if (selectedBar !== null) {
+            chart.data.datasets[0].backgroundColor[selectedBar] = defaultColor;
+          }
+
+          selectedBar = index;
+          chart.data.datasets[0].backgroundColor[index] = highlightColor;
+
+          chart.update();
+
+          document.getElementById('selectedInfo').textContent = `Дата: ${labels[index]}, Курс: ${dataRates[index].toFixed(4)} RUB`;
+        }
+      }
+    });
+  }
+
+  buildChart();
+</script>
+
+
+
+    <a href="#" onclick="scrollToTop(); return false;" class="back-to-top">Наверх ↑</a>
+  </main>
+</body>
+</html>

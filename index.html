@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>О компании</title>
+  <link rel="icon" href="public/img/favicon.ico" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #sidebar {
+      width: 220px;
+      background-color: #09388a;
+      color: #ffffff;
+      padding: 20px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sidebar h1 {
+      font-size: 1.5em;
+      margin: 0 0 20px 10px;
+    }
+
+    #sidebar nav a {
+      display: block;
+      padding: 10px 8px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      transition: background-color 0.2s;
+    }
+
+    #sidebar nav a:hover {
+      background-color: #ffffff22;
+    }
+
+    #content {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 20px;
+      position: relative;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      border-top: 1px solid #ccc;
+      margin-top: 40px;
+      color: #555;
+      font-size: 0.9em;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #09388a;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<script>
+  function scrollToTop() {
+    document.getElementById('content').scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+<body>
+  <aside id="sidebar">
+    <h1>Fesco</h1>
+    <nav>
+      <a href="index.html" class="">О компании</a>
+      <a href="news.html" class="">Новости</a>
+      <a href="currency.html" class="">Курс валют</a>
+      <a href="contacts.html" class="">Контактные данные</a>
+      <a href="video.html" class="">Видео</a>
+    </nav>
+  </aside>
+
+  <main id="content">
+    
+
+<section class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <img src="public/img/1880.jpg" alt="Владивосток 1880-х" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-3">1880: Основание FESCO</h2>
+      <p>25 апреля 1880 года во Владивостоке было основано представительство Добровольного флота (Доброфлот). В тот же день судно "Москва" прибыло из Одессы, положив начало регулярным грузовым и пассажирским перевозкам между европейской частью России и Дальним Востоком.</p>
+      <p><em>Миссия: Связывать Восток и Запад надёжными морскими путями.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="public/img/ship2.jpeg" alt="Современное судно FESCO" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-3">1935: Переименование в FESCO</h2>
+        <p>В 1935 году компания была переименована в Дальневосточное морское пароходство (FESCO), отражая расширение географии и масштабов деятельности.</p>
+        <ul>
+          <li>1971: Запуск контейнерных перевозок</li>
+          <li>1973-1990: Крупнейшая транспортная компания страны</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <img src="public/img/conteiner.jpg" alt="Контейнеры FESCO" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-3">1990-2000: Новая эра — приватизация</h2>
+      <p>После распада СССР компания стала одним из первых частных логистических операторов России. Были начаты масштабные реформы, закупка нового оборудования, развитие терминалов.</p>
+      <p><strong>Ключевое достижение:</strong> создание мультимодальной логистической системы, включающей морской, железнодорожный и автотранспорт.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-light py-5">
+  <div class="container">
+    <div class="row align-items-center flex-md-row-reverse">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="public/img/inside.webp" alt="FESCO за границей" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-3">2000-2015: Выход на международный рынок</h2>
+        <p>FESCO открывает представительства в Китае, Японии, Корее, США. Партнёрства с MOL, Maersk, K Line укрепляют позиции в Азиатско-Тихоокеанском регионе.</p>
+        <ul>
+          <li>Открытие маршрутов «Восточный-Москва-Европа»</li>
+          <li>Старт проекта TransSiberian LandBridge</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <img src="public/img/fesko.png" alt="Цифровые технологии в FESCO" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-3">2016-2024: Цифровые технологии и экология</h2>
+      <p>Внедрение IT-решений позволило клиентам отслеживать грузы в реальном времени. Компания модернизировала флот, сделав акцент на экологичности и энергоэффективности.</p>
+      <p><strong>Платформа FESCO Digital:</strong> единое окно для управления логистикой.</p>
+      <blockquote class="blockquote text-muted mt-3">
+        <em>«FESCO — это синтез традиций и инноваций»</em>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="text-white py-5 text-center" style="background-color: #09388a">
+  <div class="container">
+    <h2 class="mb-4">Сегодня FESCO — это:</h2>
+    <div class="row">
+      <div class="col-md-3"><strong>140+</strong><br>лет истории</div>
+      <div class="col-md-3"><strong>30+</strong><br>судов в собственности</div>
+      <div class="col-md-3"><strong>2+ млн</strong><br>TEU в год</div>
+      <div class="col-md-3"><strong>5000+</strong><br>сотрудников</div>
+    </div>
+    <p class="mt-4">Мы продолжаем соединять континенты и делать мир ближе.</p>
+    <a href="https://www.fesco.ru" target="_blank" class="btn btn-light mt-3">Посетить сайт FESCO</a>
+  </div>
+</section>
+
+
+
+    <a href="#" onclick="scrollToTop(); return false;" class="back-to-top">Наверх ↑</a>
+  </main>
+</body>
+</html>
